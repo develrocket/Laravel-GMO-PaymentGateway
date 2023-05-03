@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Nekoding\GmoPaymentGateway\GmoPaymentGateway;
+use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard\Basic;
+use Nekoding\GmoPaymentGateway\GmoPaymentGatewayFacade;
 
 class GMOPaymentController extends Controller
 {
     //
     public function index() {
-        $gmo = new \Nekoding\GmoPaymentGateway\GmoPaymentGateway();
+        $gmo = new GmoPaymentGateway();
 
         // if you want interact with GMO Site API use this
         $siteApi = $gmo->useSiteApi();
@@ -24,5 +27,6 @@ class GMOPaymentController extends Controller
 
         $response->getResult(); // it will return response from entry transaction and exec transaction process
         file_put_contents('1.txt', print_r($response, 1));
+        return "done";
     }
 }

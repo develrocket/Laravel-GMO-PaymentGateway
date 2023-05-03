@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/gmo', GMOPaymentController::class, 'index');
+Route::get('/gmo', [GMOPaymentController::class, 'index']);
